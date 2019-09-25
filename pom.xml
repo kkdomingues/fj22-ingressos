@@ -149,5 +149,12 @@
             </plugin>
         </plugins>
     </build>
+    
+    <developers>
+    	<developer>
+    	<name>Karina</name>
+    	<email>kdomingues1@gmail.com</email>
+    	</developer>
+    	</developers>
 
 </project>
