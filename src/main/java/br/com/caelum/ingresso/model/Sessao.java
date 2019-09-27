@@ -20,6 +20,13 @@ public class Sessao {
 	@ManyToOne
 	private Sala sala;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Sessao [id=" + id + ", filme=" + filme.getNome() + ", sala=" + sala.getNome() + ", horario=" + horario + "]";
+	}
+
 	private LocalTime horario;
 	
 	
