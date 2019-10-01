@@ -1,4 +1,3 @@
-
 package br.com.caelum.ingresso.controller;
 
 import java.util.List;
@@ -33,8 +32,10 @@ public class SessaoController {
 	@Autowired
 	private SessaoDao SessaoDao;
 
-	@GetMapping("/admin/sessao")
+	@GetMapping({"/admin/sessao", "/admin/sessao/{id}"})
 	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form) {
+
+		form.setSalaId(salaId);
 
 		ModelAndView ModelAndView = new ModelAndView("sessao/sessao");
 
@@ -60,14 +61,7 @@ public class SessaoController {
 
 		Sessao sessao = form.toSessao(filmeDao, salaDao);
 
-		List<Sessao> sessoesExistentes = SessaoDao.buscaSessaoDa(sessao.getSala());
-
-		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoesExistentes);
-
-		if (gerenciador.cabe(sessao)) {
-
-			SessaoDao.save(sessao);
-		}
+		SessaoDao.save(sessao);
 
 		return new ModelAndView(pagina);
 

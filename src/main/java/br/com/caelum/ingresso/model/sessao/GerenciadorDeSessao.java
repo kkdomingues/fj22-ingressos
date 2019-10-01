@@ -1,6 +1,5 @@
 package br.com.caelum.ingresso.model.sessao;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;

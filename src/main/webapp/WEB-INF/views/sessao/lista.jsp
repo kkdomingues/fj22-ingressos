@@ -15,7 +15,7 @@
                 <th>Horário</th>
                 <th>Filme</th>
                 <th>Duração</th>
- <!--                 <th>Preço</th> -->
+                 <td>${sessao.preco}</td>
 
                 <th colspan="2" class="text-center">Ações</th>
             </tr>

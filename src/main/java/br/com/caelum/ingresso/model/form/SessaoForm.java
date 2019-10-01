@@ -1,6 +1,5 @@
 package br.com.caelum.ingresso.model.form;
 
-import java.lang.module.FindException;
 import java.time.LocalTime;
 
 import javax.validation.constraints.NotNull;
@@ -53,7 +52,10 @@ public class SessaoForm {
 		Sala sala = salaDao.findOne(salaId);
 		Filme filme = filmeDao.findOne(filmeId);
 		
-		return new Sessao(filme, sala, horario);
+		Sessao sessao =  new Sessao(filme, sala, horario);
+		sessao.setId(salaId);
+		return sessao; 
+		
 		
 	}
 

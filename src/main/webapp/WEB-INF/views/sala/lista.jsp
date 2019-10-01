@@ -10,7 +10,7 @@
             <thead>
             <tr>
                 <th class="text-center">Nome</th>
-	       <!-- <th class="text-center">Preço</th>	  -->
+	       <td class="text-center">${sala.preco}$</td>	 
                 <th colspan="4" class="text-center">Ações</th>
             </thead>
             <tbody>

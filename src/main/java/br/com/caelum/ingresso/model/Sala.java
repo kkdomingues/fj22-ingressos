@@ -1,6 +1,9 @@
 package br.com.caelum.ingresso.model;
 
 import javax.persistence.*;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,13 +14,15 @@ import java.util.stream.Collectors;
 public class Sala {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String nome;
 
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Lugar> lugares = new HashSet<>();
+    
+    private BigDecimal preco = BigDecimal.ZERO;
 
     /**
      * @deprecated hibernate only
@@ -26,11 +31,21 @@ public class Sala {
 
     }
 
-    public Sala(String nome) {
+    public Sala(String nome, BigDecimal preco) {
         this.nome = nome;
+        this.preco = preco;
     }
+    
+    
+    public BigDecimal getPreco() {
+		return preco.setScale(2, RoundingMode.HALF_UP);
+	}
 
-    public Integer getId() {
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public Integer getId() {
         return id;
     }
 
