@@ -14,11 +14,15 @@ import br.com.caelum.ingresso.model.Sessao;
 @Repository
 public class SessaoDao {
 
-	@PersistenceContext                /// o spring vai trabalhar em conjunto com o JPA -- Ele gerencia os dados no
+	@PersistenceContext /// o spring vai trabalhar em conjunto com o JPA -- Ele gerencia os dados no
 	private EntityManager manager;
 
 	public void save(Sessao sessao) {
 		manager.persist(sessao);
+	}
+
+	public Sessao findOne(Integer id) {
+		return manager.find(Sessao.class, id);
 	}
 
 	public List<Sessao> buscaSessaoDa(Sala sala) {
@@ -32,8 +36,8 @@ public class SessaoDao {
 				.setParameter("filme", filme).getResultList();
 	}
 
-    public List<Sessao> findAll() {
-        return manager.createQuery("select s from Sessao s", Sessao.class).getResultList();
-    }
+	public List<Sessao> findAll() {
+		return manager.createQuery("select s from Sessao s", Sessao.class).getResultList();
+	}
 
 }
